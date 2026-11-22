@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Resume Builder | AI Resume & Career Assistant</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        AI Career Assistant <span class="badge">Gemini</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="builder.html" class="active">Resume Builder</a></li>
+        <li><a href="analyzer.html">Analyzer</a></li>
+        <li><a href="matcher.html">JD Matcher</a></li>
+        <li><a href="interview.html">Interview Prep</a></li>
+        <li><a href="cover-letter.html">Cover Letter</a></li>
+        <li><a href="chatbot.html">AI Chatbot</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle" type="button">Dark Mode</button>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="section-header">
+      <h1>AI Resume Builder</h1>
+      <p>Fill in your details below, polish your project &amp; experience bullet points with Gemini, and export a clean PDF.</p>
+    </div>
+
+    <div class="grid-2">
+      <!-- Left Column: Form Inputs -->
+      <section class="card" aria-label="Resume Input Form">
+        <form id="resumeBuilderForm">
+          <div class="form-group">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" class="form-control" placeholder="e.g., Priya Sharma" required />
+          </div>
+
+          <div class="form-group">
+            <label for="contactInfo">Contact Line (Email | Phone | City | GitHub/LinkedIn) *</label>
+            <input type="text" id="contactInfo" class="form-control" placeholder="priya@email.com | +91-9876543210 | Jaipur, India | github.com/priya" required />
+          </div>
+
+          <div class="form-group">
+            <label for="targetRole">Target Job / Internship Role *</label>
+            <input type="text" id="targetRole" class="form-control" placeholder="e.g., Junior Frontend Developer / Software Engineering Intern" required />
+          </div>
+
+          <div class="form-group">
+            <label for="educationInput">Education (Degree, College, Graduation Year, CGPA/Percentage)</label>
+            <textarea id="educationInput" class="form-control" style="min-height: 80px;" placeholder="B.Tech in Computer Science, XYZ University (2023 - 2027) | CGPA: 8.6/10"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="skillsInput">Technical &amp; Soft Skills</label>
+            <textarea id="skillsInput" class="form-control" style="min-height: 75px;" placeholder="Languages: C, C++, Python, JavaScript | Web: HTML5, CSS3, REST APIs | Tools: Git, GitHub, VS Code"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="experienceInput">Projects, Internships &amp; Achievements (Raw Notes) *</label>
+            <textarea id="experienceInput" class="form-control" placeholder="Example: Built a student attendance tracker using Python and CSV files. Reduced manual roll-call time for 60 students."></textarea>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <button type="button" id="enhanceBtn" class="btn btn-primary">Enhance Bullets with Gemini</button>
+            <button type="button" id="saveDraftBtn" class="btn btn-outline">Save Draft Locally</button>
+            <button type="button" id="printResumeBtn" class="btn btn-outline">Print / Save PDF</button>
+          </div>
+
+          <div id="builderLoader" class="loader-box" role="status" aria-live="polite">
+            <div class="spinner"></div>
+            <span>Gemini is rewriting your experience into ATS-ready bullet points...</span>
+          </div>
+
+          <div id="builderError" class="alert alert-error" role="alert"></div>
+          <div id="builderSuccess" class="alert alert-success" role="status"></div>
+        </form>
+      </section>
+
+      <!-- Right Column: Live Resume Preview -->
+      <section aria-label="Live Resume Preview">
+        <div id="resumePreviewSheet" class="resume-paper">
+          <h2 id="prevName">YOUR FULL NAME</h2>
+          <div id="prevContact" class="resume-contact">email@example.com | Phone | Location | Portfolio/GitHub</div>
+
+          <h3>Target Objective</h3>
+          <p id="prevObjective">Motivated candidate seeking an entry-level opportunity to apply technical and problem-solving skills.</p>
+
+          <h3>Education</h3>
+          <div id="prevEducation" class="resume-body-text">Your degree, university, and graduation year will appear here.</div>
+
+          <h3>Technical Skills</h3>
+          <div id="prevSkills" class="resume-body-text">Your programming languages, frameworks, and tools will appear here.</div>
+
+          <h3>Projects &amp; Experience</h3>
+          <div id="prevExperience" class="resume-body-text">&bull; Enter your raw project or internship notes on the left and click "Enhance Bullets with Gemini".</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>AI Resume &amp; Career Assistant &bull; Built with Vanilla HTML, CSS, JavaScript &amp; Google Gemini API</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/api-client.js"></script>
+  <script src="js/builder.js"></script>
+</body>
+</html>

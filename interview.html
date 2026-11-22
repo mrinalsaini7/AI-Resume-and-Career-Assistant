@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Interview Preparation | AI Resume & Career Assistant</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        AI Career Assistant <span class="badge">Gemini</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="builder.html">Resume Builder</a></li>
+        <li><a href="analyzer.html">Analyzer</a></li>
+        <li><a href="matcher.html">JD Matcher</a></li>
+        <li><a href="interview.html" class="active">Interview Prep</a></li>
+        <li><a href="cover-letter.html">Cover Letter</a></li>
+        <li><a href="chatbot.html">AI Chatbot</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle" type="button">Dark Mode</button>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="section-header">
+      <h1>AI Interview Preparation</h1>
+      <p>Generate realistic interview questions, interviewer intent, and STAR-method sample answers tailored to your target role.</p>
+    </div>
+
+    <div class="grid-2">
+      <!-- Left: Configuration Form -->
+      <section class="card">
+        <form id="interviewForm">
+          <div class="form-group">
+            <label for="interviewRole">Target Job / Internship Role *</label>
+            <input type="text" id="interviewRole" class="form-control" placeholder="e.g., Software Engineer Intern, Junior Frontend Developer" required />
+          </div>
+
+          <div class="form-group">
+            <label for="interviewFocus">Interview Round Focus</label>
+            <select id="interviewFocus" class="form-control">
+              <option value="Balanced Technical and Behavioral Mix">Balanced Technical &amp; Behavioral Mix</option>
+              <option value="Technical Concepts and Project Deep-Dive">Technical Concepts &amp; Project Deep-Dive</option>
+              <option value="Behavioral and Situational (STAR Method)">Behavioral &amp; Situational (STAR Method)</option>
+              <option value="HR Screening and Career Goals">HR Screening &amp; Career Goals</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <label for="interviewContext" style="margin-bottom: 0;">Your Projects / Skills / Job Description (Optional)</label>
+              <button type="button" id="interviewLoadDraftBtn" class="btn btn-outline" style="padding: 0.25rem 0.65rem; font-size: 0.8rem;">Load Saved Draft</button>
+            </div>
+            <textarea id="interviewContext" class="form-control" style="min-height: 150px;" placeholder="Paste your skills, key projects, or job description so Gemini asks personalized questions..."></textarea>
+          </div>
+
+          <button type="submit" id="interviewSubmitBtn" class="btn btn-primary">Generate Interview Questions</button>
+
+          <div id="interviewLoader" class="loader-box" role="status" aria-live="polite">
+            <div class="spinner"></div>
+            <span>Gemini is preparing tailored interview questions and sample answers...</span>
+          </div>
+
+          <div id="interviewError" class="alert alert-error" role="alert"></div>
+        </form>
+      </section>
+
+      <!-- Right: Generated Questions & STAR Guides -->
+      <section class="card">
+        <div>
+          <h3>Mock Interview Guide</h3>
+          <p>Practice answering each question aloud before reading the sample strategy.</p>
+          <div id="interviewOutput" class="ai-output">Enter a target role on the left and click "Generate Interview Questions" to begin your mock prep.</div>
+        </div>
+        <button type="button" id="copyInterviewBtn" class="btn btn-outline" style="margin-top: 1rem;">Copy Prep Guide</button>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>AI Resume &amp; Career Assistant &bull; Built with Vanilla HTML, CSS, JavaScript &amp; Google Gemini API</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/api-client.js"></script>
+  <script src="js/interview.js"></script>
+</body>
+</html>

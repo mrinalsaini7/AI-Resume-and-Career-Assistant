@@ -1,0 +1,7 @@
+.env
+.env.local
+local-server.mjs
+node_modules/
+.vercel/
+.netlify/
+.DS_Store

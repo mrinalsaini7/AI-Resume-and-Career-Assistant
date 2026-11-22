@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Description Matcher | AI Resume & Career Assistant</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        AI Career Assistant <span class="badge">Gemini</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="builder.html">Resume Builder</a></li>
+        <li><a href="analyzer.html">Analyzer</a></li>
+        <li><a href="matcher.html" class="active">JD Matcher</a></li>
+        <li><a href="interview.html">Interview Prep</a></li>
+        <li><a href="cover-letter.html">Cover Letter</a></li>
+        <li><a href="chatbot.html">AI Chatbot</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle" type="button">Dark Mode</button>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="section-header">
+      <h1>Job Description Matcher</h1>
+      <p>Compare your resume against any internship or job description to uncover keyword gaps and boost your ATS match score.</p>
+    </div>
+
+    <form id="matcherForm" class="card" style="margin-bottom: 1.75rem;">
+      <div class="grid-2">
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <label for="matcherResumeInput" style="margin-bottom: 0;">1. Your Resume Text *</label>
+            <button type="button" id="matcherLoadDraftBtn" class="btn btn-outline" style="padding: 0.25rem 0.65rem; font-size: 0.8rem;">Load Saved Draft</button>
+          </div>
+          <textarea id="matcherResumeInput" class="form-control" style="min-height: 220px;" placeholder="Paste your resume here..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="matcherJdInput">2. Target Job Description (JD) *</label>
+          <textarea id="matcherJdInput" class="form-control" style="min-height: 220px;" placeholder="Paste the full job requirements, responsibilities, and qualifications here..."></textarea>
+        </div>
+      </div>
+
+      <div>
+        <button type="submit" id="matcherSubmitBtn" class="btn btn-primary">Compare Resume &amp; Job Description</button>
+      </div>
+
+      <div id="matcherLoader" class="loader-box" role="status" aria-live="polite">
+        <div class="spinner"></div>
+        <span>Gemini is comparing your skills and experience against the job requirements...</span>
+      </div>
+
+      <div id="matcherError" class="alert alert-error" role="alert"></div>
+    </form>
+
+    <section class="card" aria-label="Match Comparison Results">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+        <h3>ATS Alignment &amp; Gap Analysis</h3>
+        <button type="button" id="copyMatchBtn" class="btn btn-outline" style="padding: 0.4rem 0.85rem; font-size: 0.85rem;">Copy Results</button>
+      </div>
+      <div id="matcherOutput" class="ai-output">Paste both your resume and a job description above, then click "Compare Resume &amp; Job Description".</div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>AI Resume &amp; Career Assistant &bull; Built with Vanilla HTML, CSS, JavaScript &amp; Google Gemini API</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/api-client.js"></script>
+  <script src="js/matcher.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | AI Resume & Career Assistant</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        AI Career Assistant <span class="badge">Gemini</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="builder.html">Resume Builder</a></li>
+        <li><a href="analyzer.html">Analyzer</a></li>
+        <li><a href="matcher.html">JD Matcher</a></li>
+        <li><a href="interview.html">Interview Prep</a></li>
+        <li><a href="cover-letter.html">Cover Letter</a></li>
+        <li><a href="chatbot.html">AI Chatbot</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle" type="button">Dark Mode</button>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="section-header">
+      <h1>Career Readiness Dashboard</h1>
+      <p>Track your AI tool usage, review recent sessions, and jump directly into any career preparation workflow.</p>
+    </div>
+
+    <!-- Real Activity Metrics (Populated from localStorage via dashboard.js) -->
+    <section class="grid-3" style="margin-bottom: 2rem;" aria-label="Session Statistics">
+      <div class="stat-card">
+        <div class="stat-value" id="statTotalRuns">0</div>
+        <div class="stat-label">Completed AI Analyses &amp; Generations</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statSavedResume">No</div>
+        <div class="stat-label">Draft Resume Saved Locally</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">6 Tools</div>
+        <div class="stat-label">Active Gemini Career Modules</div>
+      </div>
+    </section>
+
+    <!-- Quick Launch & Recent Activity -->
+    <div class="grid-2">
+      <section class="card">
+        <div>
+          <h3>Recommended Student Workflow</h3>
+          <p>Follow this 4-step sequence before submitting any internship or graduate job application:</p>
+          <ol style="padding-left: 1.25rem; color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1.25rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>Step 1:</strong> Draft your base resume in <a href="builder.html">AI Resume Builder</a>.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Step 2:</strong> Audit formatting and impact in <a href="analyzer.html">AI Resume Analyzer</a>.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Step 3:</strong> Tailor keywords using <a href="matcher.html">Job Description Matcher</a>.</li>
+            <li><strong>Step 4:</strong> Generate a <a href="cover-letter.html">Cover Letter</a> and rehearse in <a href="interview.html">Interview Prep</a>.</li>
+          </ol>
+        </div>
+        <a href="builder.html" class="btn btn-primary">Start Step 1: Resume Builder</a>
+      </section>
+
+      <section class="card">
+        <div>
+          <h3>Recent AI Activity Log</h3>
+          <p>Your latest live Gemini API tool runs in this browser:</p>
+          <ul id="recentActivityList" style="list-style: none; font-size: 0.9rem; color: var(--text-secondary);">
+            <li>No AI sessions recorded yet. Open any tool to begin.</li>
+          </ul>
+        </div>
+        <button id="clearHistoryBtn" type="button" class="btn btn-outline" style="margin-top: 1rem;">Clear Local Activity</button>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>AI Resume &amp; Career Assistant &bull; Built with Vanilla HTML, CSS, JavaScript &amp; Google Gemini API</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

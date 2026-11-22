@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Letter Generator | AI Resume & Career Assistant</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        AI Career Assistant <span class="badge">Gemini</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="builder.html">Resume Builder</a></li>
+        <li><a href="analyzer.html">Analyzer</a></li>
+        <li><a href="matcher.html">JD Matcher</a></li>
+        <li><a href="interview.html">Interview Prep</a></li>
+        <li><a href="cover-letter.html" class="active">Cover Letter</a></li>
+        <li><a href="chatbot.html">AI Chatbot</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle" type="button">Dark Mode</button>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="section-header">
+      <h1>AI Cover Letter Generator</h1>
+      <p>Generate a tailored, persuasive cover letter that connects your academic background and projects to the employer's needs.</p>
+    </div>
+
+    <div class="grid-2">
+      <!-- Left: Form -->
+      <section class="card">
+        <form id="coverLetterForm">
+          <div class="form-group">
+            <label for="clName">Your Full Name *</label>
+            <input type="text" id="clName" class="form-control" placeholder="e.g., Rohan Verma" required />
+          </div>
+
+          <div class="form-group">
+            <label for="clCompany">Target Company Name *</label>
+            <input type="text" id="clCompany" class="form-control" placeholder="e.g., Infosys, Razorpay, Google" required />
+          </div>
+
+          <div class="form-group">
+            <label for="clRole">Target Role / Internship *</label>
+            <input type="text" id="clRole" class="form-control" placeholder="e.g., Software Development Intern" required />
+          </div>
+
+          <div class="form-group">
+            <label for="clTone">Cover Letter Tone</label>
+            <select id="clTone" class="form-control">
+              <option value="Professional and Confident">Professional &amp; Confident</option>
+              <option value="Enthusiastic and Growth-Oriented">Enthusiastic &amp; Growth-Oriented</option>
+              <option value="Concise and Direct">Concise &amp; Direct</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <label for="clHighlights" style="margin-bottom: 0;">Your Top Skills, Projects &amp; Why This Company *</label>
+              <button type="button" id="clLoadDraftBtn" class="btn btn-outline" style="padding: 0.25rem 0.65rem; font-size: 0.8rem;">Load Saved Draft</button>
+            </div>
+            <textarea id="clHighlights" class="form-control" style="min-height: 140px;" placeholder="Mention your degree, 1-2 relevant projects, key technical/soft skills, and what excites you about the company..."></textarea>
+          </div>
+
+          <button type="submit" id="clSubmitBtn" class="btn btn-primary">Generate Cover Letter</button>
+
+          <div id="clLoader" class="loader-box" role="status" aria-live="polite">
+            <div class="spinner"></div>
+            <span>Gemini is drafting your personalized cover letter...</span>
+          </div>
+
+          <div id="clError" class="alert alert-error" role="alert"></div>
+        </form>
+      </section>
+
+      <!-- Right: Output -->
+      <section class="card">
+        <div>
+          <h3>Generated Cover Letter</h3>
+          <p>Review, personalize any specific details, and copy into your application.</p>
+          <div id="clOutput" class="ai-output">Fill in your details on the left and click "Generate Cover Letter".</div>
+        </div>
+        <button type="button" id="copyClBtn" class="btn btn-outline" style="margin-top: 1rem;">Copy Cover Letter</button>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>AI Resume &amp; Career Assistant &bull; Built with Vanilla HTML, CSS, JavaScript &amp; Google Gemini API</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/api-client.js"></script>
+  <script src="js/cover-letter.js"></script>
+</body>
+</html>

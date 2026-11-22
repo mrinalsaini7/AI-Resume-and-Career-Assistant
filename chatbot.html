@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Career Chatbot | AI Resume & Career Assistant</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        AI Career Assistant <span class="badge">Gemini</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="builder.html">Resume Builder</a></li>
+        <li><a href="analyzer.html">Analyzer</a></li>
+        <li><a href="matcher.html">JD Matcher</a></li>
+        <li><a href="interview.html">Interview Prep</a></li>
+        <li><a href="cover-letter.html">Cover Letter</a></li>
+        <li><a href="chatbot.html" class="active">AI Chatbot</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle" type="button">Dark Mode</button>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h1>AI Career Mentor Chatbot</h1>
+        <p>Ask real-time questions about internships, skill roadmaps, LinkedIn optimization, networking, and interview strategy.</p>
+      </div>
+      <button type="button" id="clearChatBtn" class="btn btn-outline">Reset Conversation</button>
+    </div>
+
+    <section class="card" aria-label="Career Mentor Chat Interface">
+      <!-- Quick Starter Prompts -->
+      <div class="starter-chips" aria-label="Suggested questions">
+        <button type="button" class="chip-btn" data-prompt="How can a second-year Computer Science student land their first software internship?">Land First Tech Internship</button>
+        <button type="button" class="chip-btn" data-prompt="What projects look best on a fresh graduate's resume when they have no prior work experience?">Best Resume Projects</button>
+        <button type="button" class="chip-btn" data-prompt="How should I structure my LinkedIn headline and About section as a fresh graduate?">Optimize LinkedIn Profile</button>
+        <button type="button" class="chip-btn" data-prompt="Give me a 30-day preparation roadmap for entry-level technical interviews.">30-Day Interview Roadmap</button>
+      </div>
+
+      <!-- Scrollable Message History -->
+      <div id="chatWindow" class="chat-window" role="log" aria-live="polite">
+        <div class="chat-bubble bot">
+          <span class="chat-meta">Gemini Career Mentor</span>
+          Hello! I am your AI Career Assistant. Ask me anything about building your resume, choosing projects, preparing for interviews, or planning your career path.
+        </div>
+      </div>
+
+      <!-- Message Input Form -->
+      <form id="chatForm" class="chat-input-row">
+        <label for="chatInput" class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden;">Type your career question</label>
+        <input type="text" id="chatInput" class="form-control" placeholder="Ask a career question (e.g., How do I explain a gap or lack of experience?)..." autocomplete="off" required />
+        <button type="submit" id="chatSendBtn" class="btn btn-primary">Send</button>
+      </form>
+
+      <div id="chatLoader" class="loader-box" role="status" aria-live="polite">
+        <div class="spinner"></div>
+        <span>Gemini Career Mentor is thinking...</span>
+      </div>
+
+      <div id="chatError" class="alert alert-error" role="alert"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>AI Resume &amp; Career Assistant &bull; Built with Vanilla HTML, CSS, JavaScript &amp; Google Gemini API</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/api-client.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

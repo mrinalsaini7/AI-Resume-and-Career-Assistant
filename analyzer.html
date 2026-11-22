@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Resume Analyzer | AI Resume & Career Assistant</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        AI Career Assistant <span class="badge">Gemini</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="builder.html">Resume Builder</a></li>
+        <li><a href="analyzer.html" class="active">Analyzer</a></li>
+        <li><a href="matcher.html">JD Matcher</a></li>
+        <li><a href="interview.html">Interview Prep</a></li>
+        <li><a href="cover-letter.html">Cover Letter</a></li>
+        <li><a href="chatbot.html">AI Chatbot</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle" type="button">Dark Mode</button>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="section-header">
+      <h1>AI Resume Analyzer</h1>
+      <p>Paste your full resume text below to get an honest, recruiter-grade ATS audit and actionable rewrite suggestions.</p>
+    </div>
+
+    <div class="grid-2">
+      <!-- Input Card -->
+      <section class="card">
+        <form id="analyzerForm">
+          <div class="form-group">
+            <label for="analyzerRole">Target Industry / Role (Optional)</label>
+            <input type="text" id="analyzerRole" class="form-control" placeholder="e.g., Data Analyst, Full-Stack Intern, Marketing Associate" />
+          </div>
+
+          <div class="form-group">
+            <label for="resumeTextInput">Paste Your Resume Content *</label>
+            <textarea id="resumeTextInput" class="form-control" style="min-height: 260px;" placeholder="Paste your complete resume text here (Education, Skills, Projects, Experience)..."></textarea>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <button type="submit" id="analyzeSubmitBtn" class="btn btn-primary">Analyze My Resume</button>
+            <button type="button" id="loadDraftBtn" class="btn btn-outline">Load Saved Draft from Builder</button>
+          </div>
+
+          <div id="analyzerLoader" class="loader-box" role="status" aria-live="polite">
+            <div class="spinner"></div>
+            <span>Gemini is auditing your resume structure, verbs, and ATS compatibility...</span>
+          </div>
+
+          <div id="analyzerError" class="alert alert-error" role="alert"></div>
+        </form>
+      </section>
+
+      <!-- Output Card -->
+      <section class="card">
+        <div>
+          <h3>Recruiter &amp; ATS Audit Report</h3>
+          <p>Your detailed score, strengths, red flags, and bullet rewrites will appear below.</p>
+          <div id="analyzerOutput" class="ai-output">Submit your resume on the left to receive your AI audit report.</div>
+        </div>
+        <button type="button" id="copyAnalysisBtn" class="btn btn-outline" style="margin-top: 1rem;">Copy Report</button>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>AI Resume &amp; Career Assistant &bull; Built with Vanilla HTML, CSS, JavaScript &amp; Google Gemini API</p>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/api-client.js"></script>
+  <script src="js/analyzer.js"></script>
+</body>
+</html>
