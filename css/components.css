@@ -453,3 +453,15 @@
 [data-theme="dark"] .chip-btn:hover {
   color: #091326;
 }
+.chat-bubble {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 82%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.93rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}

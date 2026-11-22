@@ -96,3 +96,55 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Internal server error while processing AI request.' });
     }
   }
+  const modelsToTry = ['gemini-4-hydrogen', 'gemini-2.5-flash'];
+let data = null;
+let lastStatus = 503;
+let lastErrorMessage = 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.';
+
+for (const model of modelsToTry) {
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+    let response;
+    try {
+      response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(geminiPayload),
+        signal: controller.signal
+      });
+    } finally {
+      clearTimeout(timeoutId);
+    }
+
+    const json = await response.json();
+    lastStatus = response.status;
+
+    if (response.ok) {
+      data = json;
+      break;
+    }
+
+    lastErrorMessage = json?.error?.message || lastErrorMessage;
+    const isOverloaded =
+      response.status === 503 ||
+      response.status === 429 ||
+      /high demand|overloaded|unavailable/i.test(lastErrorMessage);
+
+    if (!isOverloaded || attempt === 2) {
+      break;
+    }
+
+    // Brief backoff before retrying
+    await new Promise((resolve) => setTimeout(resolve, 600 * attempt));
+  }
+
+  if (data) break;
+}
+
+if (!data) {
+  return res.status(lastStatus).json({ error: lastErrorMessage });
+}
