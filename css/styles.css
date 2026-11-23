@@ -262,3 +262,24 @@ body[data-theme="dark"],
   --error-bg: #7f1d1d;
   --error-text: #fecaca;
 }
+html[data-theme="dark"] body,
+[data-theme="dark"] body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .card,
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .ai-output,
+[data-theme="dark"] .chat-bubble.bot {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .chat-window {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
