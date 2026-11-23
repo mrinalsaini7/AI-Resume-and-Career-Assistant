@@ -37,3 +37,49 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+  document.addEventListener('DOMContentLoaded', () => {
+  const htmlEl = document.documentElement;
+  const themeBtn = document.getElementById('themeToggle');
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  function readSavedTheme() {
+    try {
+      return localStorage.getItem('career_ai_theme') || 'light';
+    } catch {
+      return 'light';
+    }
+  }
+
+  function saveTheme(theme) {
+    try {
+      localStorage.setItem('career_ai_theme', theme);
+    } catch {
+      // Ignore storage restrictions
+    }
+  }
+
+  function applyTheme(theme) {
+    htmlEl.setAttribute('data-theme', theme);
+    if (themeBtn) {
+      themeBtn.textContent = theme === 'light' ? 'Dark Mode' : 'Light Mode';
+    }
+  }
+
+  applyTheme(readSavedTheme());
+
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const current = htmlEl.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      saveTheme(next);
+    });
+  }
+
+  if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  }
+});
