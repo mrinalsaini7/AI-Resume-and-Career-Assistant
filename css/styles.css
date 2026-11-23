@@ -238,3 +238,27 @@ main {
   white-space: nowrap;
   flex-shrink: 0;
 }
+/* Dark Mode Variable Overrides — place at the bottom of css/styles.css */
+html[data-theme="dark"],
+body[data-theme="dark"],
+[data-theme="dark"] {
+  --bg-primary: #091326;
+  --bg-secondary: #10203d;
+  --bg-accent-subtle: #172e54;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --brand-dark: #060d1a;
+  --brand-primary: #38bdf8;
+  --brand-primary-hover: #7dd3fc;
+  --brand-light: #0284c7;
+
+  --border-color: #1e3a66;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.45);
+  --success-bg: #14532d;
+  --success-text: #bbf7d0;
+  --error-bg: #7f1d1d;
+  --error-text: #fecaca;
+}
